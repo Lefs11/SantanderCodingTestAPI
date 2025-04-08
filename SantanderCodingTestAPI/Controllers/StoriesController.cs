@@ -17,9 +17,9 @@ namespace SantanderCodingTestAPI.Controllers
         [HttpGet("best")]
         public async Task<IActionResult> GetBestStories([FromQuery] int n = 10)
         {
-            if (n <= 0 || n > 100)
+            if (n <= 0)
             {
-                return BadRequest("Parameter 'n' must be between 1 and 100.");
+                return BadRequest("Parameter 'n' must be more than 0.");
             }
 
             var stories = await _service.GetBestStoriesAsync(n);
